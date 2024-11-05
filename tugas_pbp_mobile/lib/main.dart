@@ -1,125 +1,177 @@
+import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
-  runApp(const MyApp());
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  runApp(
+    MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: HomePage(),
+    ),
+  );
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class HomePage extends StatelessWidget {
+  final List<ItemHomePage> items = [
+    ItemHomePage("Lihat Produk", Icons.archive),
+    ItemHomePage("Tambah Produk", Icons.add),
+    ItemHomePage("Logout", Icons.logout),
+  ];
 
-  // This widget is the root of your application.
+  // List of color pairs for each card
+  final List<List<Color>> cardColors = [
+    [Color.fromRGBO(252, 255, 223, 1), Color.fromRGBO(241, 254, 135, 1)], // Color pair for the first card
+    [Color.fromRGBO(200, 255, 255, 1), Color.fromRGBO(100, 200, 255, 1)], // Color pair for the third card
+    [Color.fromRGBO(255, 220, 220, 1), Color.fromRGBO(255, 150, 150, 1)], // Color pair for the second card
+  ];
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+    return Scaffold(
+      body: Stack(
+        children: <Widget>[
+          Positioned(
+            top: 0,
+            left: 0,
+            right: 0,
+            height: 310,
+            child: Container(
+              padding: EdgeInsets.all(30.0),
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topRight,
+                  colors: [
+                    Color.fromRGBO(162, 235, 36, 1),
+                    Color.fromRGBO(140, 203, 31, 1),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Positioned(
+            top: 10,  
+            left: 20, 
+            child: Text(
+              "hijau",
+              style: GoogleFonts.rethinkSans(
+                fontSize: 35,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+            ),
+          ),
+          Positioned(
+            left: 0,
+            right: 0,
+            bottom: 0,
+            height: 525,
+            child: Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topRight,
+                  colors: [
+                    Color.fromRGBO(115, 150, 69, 1),
+                    Color.fromRGBO(78, 108, 38, 1),
+                  ],
+                ),
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(45.0),
+                  topRight: Radius.circular(45.0),
+                ),
+              ),
+              child: Column(
+                children: [
+                  SizedBox(height: 70.0), 
+                  Container(
+                    height: 450, 
+                    width: double.infinity,
+                    child: ListView.builder(
+                      padding: EdgeInsets.only(bottom: 20, left: 180, right: 180),
+                      scrollDirection: Axis.vertical, 
+                      itemCount: items.length, 
+                      itemBuilder: (context, index) {
+                        final item = items[index];
+                        final colors = cardColors[index]; 
+                        return makeCard(
+                          context: context,
+                          startColor: colors[0], 
+                          endColor: colors[1],   
+                          name: item.name,
+                          icon: item.icon,
+                        );
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Positioned(
+            bottom: 10,  
+            right: 20,   
+            child: Text(
+              "hijau",
+              style: GoogleFonts.rethinkSans(
+                fontSize: 35,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+            ),
+          ),
+        ],
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
-}
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+  Widget makeCard({
+    required BuildContext context, 
+    required String name,          
+    required IconData icon,        
+    required Color startColor,     
+    required Color endColor,       
+  }) {
+    return GestureDetector(
+      onTap: () {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text("Kamu telah menekan tombol $name"),
+            duration: Duration(seconds: 1),
+          ),
+        );
+      },
+      child: AspectRatio(
+        aspectRatio: 1.0,  
+        child: Container(
+          margin: EdgeInsets.only(bottom: 10), 
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(35.0),
+            gradient: LinearGradient(
+              begin: Alignment.topRight,
+              colors: [startColor, endColor], 
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Icon(
+                icon,
+                size: 40,
+                color: Color.fromRGBO(92, 133, 20, 1),
+              ),
+              SizedBox(height: 10),
+            ],
+          ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
+}
+
+class ItemHomePage {
+  final String name;
+  final IconData icon;
+
+  ItemHomePage(this.name, this.icon);
 }
