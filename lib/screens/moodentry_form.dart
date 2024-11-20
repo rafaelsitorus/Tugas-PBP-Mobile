@@ -123,7 +123,7 @@ class _MoodEntryFormPageState extends State<MoodEntryFormPage> {
                       backgroundColor: WidgetStateProperty.all(
                           Colors.green),
                     ),
-                    onPressed: () {
+                    onPressed: () async {
                       if (_formKey.currentState!.validate()) {
                           // Kirim ke Django dan tunggu respons
                           // TODO: Ganti URL dan jangan lupa tambahkan trailing slash (/) di akhir URL!
