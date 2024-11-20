@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tokohijau/widgets/left_drawer.dart';
 
 class MyHomePage extends StatelessWidget {
   final String npm = '5000000000'; // NPM
@@ -29,7 +30,9 @@ class MyHomePage extends StatelessWidget {
         ),
         // Warna latar belakang AppBar diambil dari skema warna tema aplikasi.
         backgroundColor: Colors.green,
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
+      drawer: const LeftDrawer(),
       // Body halaman dengan padding di sekelilingnya.
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -125,6 +128,9 @@ class ItemCard extends StatelessWidget {
             ..showSnackBar(
               SnackBar(content: Text("Kamu telah menekan tombol ${item.name}!"))
             );
+          if (item.name == "Tambah Produk") {
+            // TODO: Gunakan Navigator.push untuk melakukan navigasi ke MaterialPageRoute yang mencakup MoodEntryFormPage.
+          }
         },
         // Container untuk menyimpan Icon dan Text
         child: Container(
