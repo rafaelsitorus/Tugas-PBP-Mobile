@@ -15,6 +15,32 @@ For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
+TUGAS 7 PBP
+
+1. Stateless widget : Widget ini bersifat statis dan tidak pernah berubah. Contoh widget stateless adalah Icon, IconButton, dan Text. Stateful widget : Widget ini dapat berubah, misalnya ketika pengguna berinteraksi dengannya. Stateful widget menyimpan data dan dapat berubah. Proses kerja stateless dan stateful widget hampir sama, namun ada perbedaan pada tahapan Internal State. Internal State adalah tahapan untuk menambahkan state atau mengubah data pada stateful widget. Jika Internal State disebabkan oleh UI, maka sistem akan melakukan re-render tampilan dari widget awal. 
+
+2. Pada proyek ini saya menggunakan widget Stateless yang berfungsi untuk menampilkan objek-objek statis yang sudah ditentukan dari awal oleh pemrogram, karena proyek ini belum menerima masukan non-statis dari pengguna, Stateless widget menjadi perangkat yang sempurna untuk mengembangkan proyek ini, salah satu contoh dari penggunaan Stateless widget adalah pada teks "hijau" di kiri atas dan kanan bawah, Icon dan Card.
+
+3. setState() adalah metode yang digunakan dalam StatefulWidget untuk memberi tahu framework bahwa ada perubahan pada status atau data widget, dan widget tersebut perlu dibangun ulang untuk mencerminkan perubahan tersebut di UI. Pemanggilan setState() memicu fungsi build() untuk dieksekusi kembali, memperbarui tampilan dengan nilai-nilai terbaru dari variabel yang terpengaruh. Variabel yang digunakan dalam build() dan diubah di dalam setState() akan berdampak pada pembaruan tampilan, seperti nilai angka, teks, warna, atau status lainnya.
+
+4. Final dapaat digunakan untuk deklarasi variabel immutable yang nilainya sudah ataupun belum diketahui pada saat waktu kompilasi berjalan. Const dapat digunakan untuk deklarasi variabel immutable yang nilainya bersifat konstan dan harus sudah diketahui pada saat waktu kompilasi berjalan.
+
+5. Pertama, saya menciptakan kelas HomePage dengan mengextend StatelessWidget untuk menampilkan data-data statis yang saya ingin tampilkan, setelahnya saya menyiapkan list ItemHomePage untuk menampung Icons dan nama dari tiap-tiap tombol, kemudian saya mendeklarasikan List cardColors yang berguna untuk menyimpan warna tiap tombol, setelah itu saya membuat Scaffold yang berisi sebuah kotak berwarna hijau yang saya tujukan untuk menjadi bagian AppBar pada program, setelahnya saya membuat 2 teks "hijau" yang merupakan nama dari proyek e-commerce saya, yang mana kedua teks tersebut saya letakkan berlawanan arah, kemudian saya membuat sebuah body pada scaffold yang berguna sebagai penampung card-card yang nantinya akan saya buat, dimana saya juga menyiapkan spesifikasi card beserta nama-namanya agar nantinya struktur card dapat menjadi lebih rapih didalam body, setelah selesai dengan Scaffold, saya membuat widget makeCard yang berfungsi sebagai program yang mendeskripsikan seperti apa card yang nantinya akan ditampulkan pada body program, setelah selesai menentukan spesifikasi kartu, saya membuat kelas ItemHomePage yang berguna sebagai constructor untuk membuat instance dari objek ItemHomePage yang menyimpan data nama dan icon dalam tampilan aplikasi.
+
+TUGAS 8 PBP
+
+1. const di Flutter digunakan untuk mendeklarasikan widget atau nilai yang tidak berubah selama runtime, yang meningkatkan performa aplikasi karena widget tersebut hanya dibangun sekali. Sebaiknya gunakan const untuk widget yang sifatnya statis dan tidak berubah, seperti ikon atau teks tetap. Jangan gunakan const untuk widget yang bergantung pada perubahan data atau state.
+
+2. Column dan Row adalah widget untuk pengaturan layout vertikal dan horizontal. Column digunakan untuk menyusun widget secara vertikal, sementara Row digunakan untuk menyusun widget secara horizontal. Misalnya, Column cocok untuk tombol yang diatur secara vertikal, sedangkan Row digunakan untuk menampilkan tombol berdampingan secara horizontal.
+
+3. Elemen input yang digunakan di form adalah TextFormField untuk mengambil input teks seperti nama produk, deskripsi, dan harga. Elemen lain yang bisa digunakan namun tidak dipakai di sini adalah Checkbox, Radio, DropdownButton, dan Switch.
+
+4. Tema aplikasi di Flutter saya atur melalui ThemeData di dalam MaterialApp, yang memastikan konsistensi tampilan dengan menentukan warna, font, dan elemen visual lainnya. Di aplikasi ini, tema sudah diterapkan untuk warna dan font menggunakan ThemeData.
+
+5. Navigasi di Flutter saya implementasikan dengan menggunakan Navigator, menggunakan Navigator.push untuk pindah antar halaman dan Navigator.pop untuk kembali. Untuk aplikasi dengan banyak halaman, kita bisa menggunakan Navigator.pushReplacement atau Navigator.pushNamed untuk navigasi berbasis rute.
+
+TUGAS 9
+
 Tugas Implementasi Aplikasi Flutter - Toko Hijau
 1. Mengapa kita perlu membuat model untuk pengambilan atau pengiriman data JSON? Apakah akan terjadi error jika kita tidak membuat model terlebih dahulu?
 Model diperlukan untuk mengorganisir dan memetakan data JSON ke dalam objek Dart yang lebih mudah diolah. Tanpa model, kita harus mengakses data JSON secara manual setiap kali, yang bisa sangat membingungkan dan rawan kesalahan. Jika tidak ada model, bisa jadi terjadi error saat mencoba mengakses data yang tidak sesuai dengan struktur yang diharapkan.
